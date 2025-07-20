@@ -57,6 +57,27 @@ Please ensure your code follows our style guidelines and includes relevant tests
 
 ---
 
+## TODO: Enhancements & Contributions
+
+We encourage contributors to help make AirChainPay even better! Here are some suggested TODOs to enhance the project across all systems:
+
+- [ ] Improve payment gateway integrations (add more providers)
+- [ ] Enhance security (add 2FA, improve encryption, audit dependencies)
+- [ ] Add comprehensive unit and integration tests
+- [ ] Improve mobile responsiveness and accessibility
+- [ ] Refactor code for better modularity and scalability
+- [ ] Add user account management features
+- [ ] Implement transaction history and analytics dashboard
+- [ ] Improve error handling and user feedback
+- [ ] Add multi-language support
+- [ ] Write detailed developer and API documentation
+- [ ] Set up CI/CD pipelines for automated testing and deployment
+- [ ] Optimize performance for high-traffic scenarios
+
+Feel free to pick any of these or suggest your own improvements in your pull request!
+
+---
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
