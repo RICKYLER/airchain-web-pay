@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "AirChainPay",
   description: "The future of decentralized payments.",
-    generator: 'v0.dev'
+   
 }
 
 export default function RootLayout({
