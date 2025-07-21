@@ -59,21 +59,21 @@ Please ensure your code follows our style guidelines and includes relevant tests
 
 ### UI/UX Enhancement TODOs
 
-- [ ] Redesign the landing page for a more modern, visually appealing first impression
-- [ ] Add a dark mode/light mode toggle for user preference
-- [ ] Improve button styles and interactive feedback (hover, active, disabled states)
-- [ ] Enhance form validation with clear, user-friendly error messages
-- [ ] Add loading spinners or skeleton screens for async actions (e.g., payment processing)
-- [ ] Refine mobile navigation and ensure all components are touch-friendly
-- [ ] Implement accessible color contrast and font sizes for better readability
-- [ ] Add tooltips and contextual help for complex actions or fields
-- [ ] Create a consistent iconography set for actions and statuses
-- [ ] Improve the transaction confirmation and error feedback screens
-- [ ] Add user onboarding flows or guided tours for new users
-- [ ] Ensure all interactive elements are keyboard accessible and screen reader friendly
-- [ ] Use micro-animations for transitions and feedback (e.g., payment success, button clicks)
-- [ ] Optimize layout for different device sizes (responsive grids, flexible images)
-- [ ] Add a user profile/settings page with clear, intuitive controls
+- [ ] **Add Dark Mode Support:** Allow users to toggle between light and dark themes.
+- [ ] **Improve Mobile Responsiveness:** Ensure all components look great on all device sizes.
+- [ ] **Enhance Accessibility:** Improve keyboard navigation, color contrast, and add ARIA labels.
+- [ ] **Add Animations & Transitions:** Use subtle animations for buttons, modals, and page transitions.
+- [ ] **Create a Custom 404 Page:** Design a friendly and branded error page for unknown routes.
+- [ ] **Implement Toast Notifications:** Show success/error messages for user actions.
+- [ ] **Optimize Images & Assets:** Use modern formats and lazy loading for faster performance.
+- [ ] **Add Unit & Integration Tests:** Increase test coverage for components and pages.
+- [ ] **Improve Documentation:** Add usage examples, screenshots, and a features section.
+- [ ] **Add Multi-language Support:** Allow users to switch between different languages.
+- [ ] **Refactor Components:** Break down large components into smaller, reusable ones.
+- [ ] **Add a Demo Mode:** Provide a way for users to try the app with mock data.
+- [ ] **Integrate a UI Component Library:** Use or enhance a design system for consistency.
+- [ ] **SEO Improvements:** Add meta tags, Open Graph tags, and improve page titles/descriptions.
+
 
 
 Feel free to pick any of these or suggest your own improvements in your pull request!
