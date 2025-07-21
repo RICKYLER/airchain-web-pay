@@ -57,22 +57,24 @@ Please ensure your code follows our style guidelines and includes relevant tests
 
 ---
 
-## TODO: Enhancements & Contributions
+### UI/UX Enhancement TODOs
 
-We encourage contributors to help make AirChainPay even better! Here are some suggested TODOs to enhance the project across all systems:
+- [ ] Redesign the landing page for a more modern, visually appealing first impression
+- [ ] Add a dark mode/light mode toggle for user preference
+- [ ] Improve button styles and interactive feedback (hover, active, disabled states)
+- [ ] Enhance form validation with clear, user-friendly error messages
+- [ ] Add loading spinners or skeleton screens for async actions (e.g., payment processing)
+- [ ] Refine mobile navigation and ensure all components are touch-friendly
+- [ ] Implement accessible color contrast and font sizes for better readability
+- [ ] Add tooltips and contextual help for complex actions or fields
+- [ ] Create a consistent iconography set for actions and statuses
+- [ ] Improve the transaction confirmation and error feedback screens
+- [ ] Add user onboarding flows or guided tours for new users
+- [ ] Ensure all interactive elements are keyboard accessible and screen reader friendly
+- [ ] Use micro-animations for transitions and feedback (e.g., payment success, button clicks)
+- [ ] Optimize layout for different device sizes (responsive grids, flexible images)
+- [ ] Add a user profile/settings page with clear, intuitive controls
 
-- [ ] Improve payment gateway integrations (add more providers)
-- [ ] Enhance security (add 2FA, improve encryption, audit dependencies)
-- [ ] Add comprehensive unit and integration tests
-- [ ] Improve mobile responsiveness and accessibility
-- [ ] Refactor code for better modularity and scalability
-- [ ] Add user account management features
-- [ ] Implement transaction history and analytics dashboard
-- [ ] Improve error handling and user feedback
-- [ ] Add multi-language support
-- [ ] Write detailed developer and API documentation
-- [ ] Set up CI/CD pipelines for automated testing and deployment
-- [ ] Optimize performance for high-traffic scenarios
 
 Feel free to pick any of these or suggest your own improvements in your pull request!
 
