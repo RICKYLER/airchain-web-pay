@@ -113,9 +113,23 @@ Please ensure your code follows our style guidelines and includes relevant tests
 
 ---
 
-## TODO: Enhancements & Contributions
+### UI/UX Enhancement TODOs
 
-We encourage contributors to help make AirChainPay even better! Here are some suggested TODOs to enhance the project across all systems:
+- [ ] **Add Dark Mode Support:** Allow users to toggle between light and dark themes.
+- [ ] **Improve Mobile Responsiveness:** Ensure all components look great on all device sizes.
+- [ ] **Enhance Accessibility:** Improve keyboard navigation, color contrast, and add ARIA labels.
+- [ ] **Add Animations & Transitions:** Use subtle animations for buttons, modals, and page transitions.
+- [ ] **Create a Custom 404 Page:** Design a friendly and branded error page for unknown routes.
+- [ ] **Implement Toast Notifications:** Show success/error messages for user actions.
+- [ ] **Optimize Images & Assets:** Use modern formats and lazy loading for faster performance.
+- [ ] **Add Unit & Integration Tests:** Increase test coverage for components and pages.
+- [ ] **Improve Documentation:** Add usage examples, screenshots, and a features section.
+- [ ] **Add Multi-language Support:** Allow users to switch between different languages.
+- [ ] **Refactor Components:** Break down large components into smaller, reusable ones.
+- [ ] **Add a Demo Mode:** Provide a way for users to try the app with mock data.
+- [ ] **Integrate a UI Component Library:** Use or enhance a design system for consistency.
+- [ ] **SEO Improvements:** Add meta tags, Open Graph tags, and improve page titles/descriptions.
+
 
 
 ### UI/UX Enhancement TODOs
