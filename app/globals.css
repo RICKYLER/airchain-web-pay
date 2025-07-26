@@ -81,3 +81,11 @@ Light mode color variables (default
     @apply bg-background text-foreground font-sans;
   }
 }
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

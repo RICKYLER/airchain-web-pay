@@ -8,6 +8,7 @@ import Link from "next/link" // Next.js Link component for client-side navigatio
 import { Button } from "@/components/ui/Button/Button" // Shadcn UI Button component
 import { Card, CardContent } from "@/components/ui/Card/Card" // Shadcn UI Card components
 import { Search, Home, ArrowLeft } from "lucide-react" // Icons from Lucide React
+import Image from "next/image"
 
 export default function NotFound() {
   return (
@@ -16,6 +17,17 @@ export default function NotFound() {
       {/* Card to display the 404 message, with a semi-transparent dark background and blur effect. */}
       <Card className="bg-slate-800/80 backdrop-blur-xl border-blue-500/30 rounded-2xl max-w-md w-full">
         <CardContent className="p-8 text-center">
+          {/* AirChainPay Logo */}
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/images/airchainpay-logo.png"
+              alt="AirChainPay Logo"
+              width={80}
+              height={80}
+              priority
+              className="mx-auto rounded-full shadow-lg"
+            />
+          </div>
           {/* Large 404 text */}
           <div className="text-6xl font-bold text-blue-400 mb-4">404</div>
           {/* Search icon */}

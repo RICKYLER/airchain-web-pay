@@ -89,23 +89,33 @@ const testimonials = [
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
 
-  // Remove the timeout - let ProfessionalLoadingManager control completion
-  // The loading manager will call onComplete when all phases are done
+  useEffect(() => {
+    // Only show splash loader on first visit
+    const hasSeenSplash = localStorage.getItem('hasSeenSplash')
+    if (hasSeenSplash) {
+      setIsLoading(false)
+    }
+  }, [])
+
+  const handleSplashComplete = () => {
+    localStorage.setItem('hasSeenSplash', 'true')
+    setIsLoading(false)
+  }
 
   if (isLoading) {
-    console.log("Showing splash loading...")
-    return <ProfessionalSplashLoading onComplete={() => {
-      console.log("Splash loading completed!")
-      setIsLoading(false)
-    }} />
+    return <ProfessionalSplashLoading onComplete={handleSplashComplete} />
   }
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+      <section
+        className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"
+        role="region"
+        aria-label="Hero section"
+      >
         {/* Background Effects */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" aria-hidden="true">
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
         </div>
@@ -114,7 +124,7 @@ export default function HomePage() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="space-y-8">
               <div className="space-y-4">
-                <Badge className="bg-blue-500/20 text-blue-100 border-blue-400/30 hover:bg-blue-500/30">
+                <Badge className="bg-blue-500/20 text-blue-100 border-blue-400/30 hover:bg-blue-500/30" aria-label="Public Beta">
                   🚀 Now in Public Beta
                 </Badge>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
@@ -136,6 +146,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+                  aria-label="Get Started Free"
                 >
                   Get Started Free
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -144,17 +155,18 @@ export default function HomePage() {
                   size="lg"
                   variant="outline"
                   className="border-white/20 text-white hover:bg-white/10 backdrop-blur-sm bg-transparent"
+                  aria-label="View Documentation"
                 >
                   View Documentation
                 </Button>
               </div>
 
               {/* Quick Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8" role="list" aria-label="Quick stats">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
+                  <div key={stat.label} className="text-center" role="listitem">
                     <div className="flex items-center justify-center mb-2">
-                      <stat.icon className="h-6 w-6 text-blue-400" />
+                      <stat.icon className="h-6 w-6 text-blue-400" aria-hidden="true" />
                     </div>
                     <div className="text-2xl font-bold text-white">{stat.value}</div>
                     <div className="text-sm text-blue-200">{stat.label}</div>
@@ -166,100 +178,111 @@ export default function HomePage() {
             <div className="relative">
               <div className="relative z-10">
                 <Image
-                  src="/placeholder.svg?height=600&width=600&text=AirChainPay+Dashboard"
-                  alt="AirChainPay Dashboard"
+                  src="/images/mock up.png"
+                  alt="Screenshot of AirChainPay Dashboard"
                   width={600}
                   height={600}
                   className="rounded-2xl shadow-2xl border border-white/10"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-2xl blur-3xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 rounded-2xl blur-3xl" aria-hidden="true"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" role="region" aria-label="Features section">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Features
-            </Badge>
+            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-semibold">Features</span>
             <h2 className="text-3xl md:text-4xl font-bold">Why Choose AirChainPay?</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Built for developers, trusted by enterprises. Experience the perfect balance of power and simplicity.
             </p>
           </div>
-
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <Card
-                key={feature.title}
-                className="group hover:shadow-lg transition-all duration-300 border-0 bg-gradient-to-br from-background to-muted/50"
-              >
-                <CardHeader>
-                  <div
-                    className={`w-12 h-12 rounded-lg ${feature.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <feature.icon className={`h-6 w-6 ${feature.color}`} />
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="bg-white/5 rounded-xl p-8 text-center shadow-lg">
+              <div className="flex justify-center mb-4"><span className="text-4xl">⚡</span></div>
+              <h3 className="text-xl font-bold mb-2">Instant Settlement</h3>
+              <p className="text-blue-100">Process payments in seconds, not days.</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-8 text-center shadow-lg">
+              <div className="flex justify-center mb-4"><span className="text-4xl">🌍</span></div>
+              <h3 className="text-xl font-bold mb-2">Global Reach</h3>
+              <p className="text-blue-100">Transact in 150+ countries worldwide.</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-8 text-center shadow-lg">
+              <div className="flex justify-center mb-4"><span className="text-4xl">🔒</span></div>
+              <h3 className="text-xl font-bold mb-2">Secure by Design</h3>
+              <p className="text-blue-100">Bank-grade encryption and security protocols.</p>
+            </div>
+            <div className="bg-white/5 rounded-xl p-8 text-center shadow-lg">
+              <div className="flex justify-center mb-4"><span className="text-4xl">👨‍💻</span></div>
+              <h3 className="text-xl font-bold mb-2">Developer Friendly</h3>
+              <p className="text-blue-100">Easy APIs and great documentation.</p>
                   </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base leading-relaxed">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-24 bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900" role="region" aria-label="Testimonials section">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
-            <Badge variant="outline" className="mb-4">
-              Testimonials
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold">Loved by Developers Worldwide</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See what our community has to say about their experience with AirChainPay.
-            </p>
+            <span className="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-semibold">Testimonials</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">What Our Users Say</h2>
           </div>
-
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-background border-0 shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                    ))}
+            <div className="bg-white/10 rounded-xl p-8 shadow-lg text-white">
+              <div className="mb-4">
+                <div className="font-bold">Sarah Chen</div>
+                <div className="text-blue-200 text-sm">CTO, TechFlow</div>
+              </div>
+              <p>“AirChainPay made payments easy and fast for our business!”</p>
+            </div>
+            <div className="bg-white/10 rounded-xl p-8 shadow-lg text-white">
+              <div className="mb-4">
+                <div className="font-bold">Marcus Rodriguez</div>
+                <div className="text-blue-200 text-sm">Lead Developer, PayNext</div>
+              </div>
+              <p>“The integration was seamless and support is top-notch.”</p>
                   </div>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">"{testimonial.content}"</p>
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src={testimonial.avatar || "/placeholder.svg"}
-                      alt={testimonial.name}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                    <div>
-                      <div className="font-semibold">{testimonial.name}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+            <div className="bg-white/10 rounded-xl p-8 shadow-lg text-white">
+              <div className="mb-4">
+                <div className="font-bold">Emily Watson</div>
+                <div className="text-blue-200 text-sm">Founder, CryptoCommerce</div>
                     </div>
+              <p>“We increased our transaction volume by 300% after switching to AirChainPay.”</p>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Demo Video Section */}
+      <section className="py-24 bg-background" role="region" aria-label="Demo video section">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">See AirChainPay in Action</h2>
+          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Watch our quick demo to see how easy it is to get started and process payments.
+          </p>
+          <div className="flex justify-center">
+            <div className="w-full max-w-2xl aspect-video rounded-xl overflow-hidden shadow-lg border border-blue-200">
+              <iframe
+                src="https://drive.google.com/file/d/1C4SE9S6tmiv0vcteG3nGcCmcWhtHBykG/preview"
+                width="100%"
+                height="100%"
+                allow="autoplay"
+                allowFullScreen
+                title="AirChainPay Demo"
+              ></iframe>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-blue-600 to-purple-600">
+      <section className="py-24 bg-gradient-to-r from-blue-600 to-purple-600" role="region" aria-label="Call to action">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-3xl mx-auto space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -272,6 +295,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 className="bg-white text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-300"
+                aria-label="Start Building Today"
               >
                 Start Building Today
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -280,6 +304,7 @@ export default function HomePage() {
                 size="lg"
                 variant="outline"
                 className="border-white/20 text-white hover:bg-white/10 backdrop-blur-sm bg-transparent"
+                aria-label="Schedule a Demo"
               >
                 Schedule a Demo
               </Button>

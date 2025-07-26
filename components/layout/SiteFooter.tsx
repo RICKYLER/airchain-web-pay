@@ -48,8 +48,8 @@ const footerLinks = {
       { name: "Help Center", href: "/help" },
       { name: "Community", href: "/community" },
       { name: "Contact", href: "/contact" },
-      { name: "Status", href: "/status", external: true },
-      { name: "System Status", href: "/system-status", external: true },
+      { name: "Status", href: "/status" },
+      { name: "System Status", href: "/system-status" },
     ],
   },
   legal: {
@@ -75,12 +75,24 @@ export default function SiteFooter() {
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) {
-      setIsSubscribed(true)
-      setEmail("")
-      setTimeout(() => setIsSubscribed(false), 3000)
+    if (!email) return
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      if (res.ok) {
+        setIsSubscribed(true)
+        setEmail("")
+        setTimeout(() => setIsSubscribed(false), 3000)
+      } else {
+        throw new Error('Subscription failed')
+      }
+    } catch (err) {
+      alert('There was an error subscribing. Please try again later.')
     }
   }
 
@@ -177,10 +189,8 @@ export default function SiteFooter() {
                     <Link
                       href={link.href}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center"
-                      {...(link.external && { target: "_blank", rel: "noopener noreferrer" })}
                     >
                       {link.name}
-                      {link.external && <ExternalLink className="ml-1 h-3 w-3" />}
                     </Link>
                   </li>
                 ))}

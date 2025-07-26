@@ -1,5 +1,1 @@
-import SplashLoading from "@/components/layout/SplashLoader/SplashLoaderProfessional"
-
-export default function Loading() {
-  return <SplashLoading onComplete={() => {}} />
-}
+export default function Loading() { return null }

@@ -14,5 +14,6 @@ export default function Loading() {
     // This is just a placeholder to satisfy the prop requirement
   }
 
-  return <ProfessionalSplashLoading onComplete={handleComplete} />
+  // Remove splash loader, just render nothing or a minimal fallback
+  return null
 }

@@ -6,7 +6,7 @@
 import Link from "next/link" // Next.js Link component for client-side navigation
 import Image from "next/image" // Next.js Image component for optimized image loading
 import { Search, Menu, Sun, Moon } from "lucide-react" // Icons from Lucide React
-import { Button } from "@/components/ui/button" // Shadcn UI Button component
+import { Button } from "@/components/ui/Button/Button" // Shadcn UI Button component
 
 // Define props for the Header component.
 interface HeaderProps {

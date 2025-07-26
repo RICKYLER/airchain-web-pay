@@ -35,7 +35,7 @@ export default function DocsSidebarNavigation() {
     <Card
       className={cn(
         "backdrop-blur-xl border rounded-2xl sticky top-32",
-        isDarkMode ? "bg-slate-800/30 border-slate-700/30" : "bg-white/50 border-slate-200/30",
+        isDarkMode ? "bg-slate-800/90 border-slate-700/60" : "bg-white/90 border-slate-200/60",
       )}
     >
       <CardContent className="p-6">
